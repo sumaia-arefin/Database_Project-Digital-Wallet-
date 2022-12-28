@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>Login</h1>
+<form action="{{ url_for('auth_bp.login') }}" method="post">
+    {{ form.csrf_token }}
+
+    {{ form.phone.label }}
+    <br>
+    {{ form.phone }}
+    <br>
+    {{ form.pin_number.label }}
+    <br>
+    {{ form.pin_number }}
+    <br><br>
+    {{ form.submit }}
+</form>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<h2>Phone or Pin Number is invalid</h2>
+{% else %}
+<br><br><br>
+{% endif %}
+{% endwith %}
+<br>
+<h2><a href="{{ url_for('auth_bp.signup') }}">Create a Wallet</a></h2>
+{% endblock %}

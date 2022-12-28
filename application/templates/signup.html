@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>Sign Up</h1>
+<form action="{{ url_for('auth_bp.signup') }}" method="post">
+    {{ form.csrf_token }}
+
+    {{ form.full_name.label }}
+    <br>
+    {{ form.full_name }}
+    <br>
+    {{ form.phone.label }}
+    <br>
+    {{ form.phone }}
+    <br>
+    {{ form.email.label }}
+    <br>
+    {{ form.email }}
+    <br>
+    {{ form.pin_number.label }}
+    <br>
+    {{ form.pin_number }}
+    <br>
+    {{ form.pin_number_confirmation.label }}
+    <br>
+    {{ form.pin_number_confirmation }}
+    <br><br>
+    {{ form.submit }}
+</form>
+
+{% for message in get_flashed_messages() %}
+    <h2 style="color:Red;"> {{message}} </h2>
+{% endfor%}
+<br><br><br>
+
+<br>
+
+{% endblock %}
+
